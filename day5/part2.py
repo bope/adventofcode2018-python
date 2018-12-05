@@ -35,8 +35,7 @@ def prev_solution2(input):
         except IndexError:
             return len(input)
 
-        u, l = sorted([a, b])
-        if u.isupper() and l.islower() and u.lower() == l:
+        if a != b and a.lower() == b.lower():
             input.pop(i)
             input.pop(i)
             i -= 1

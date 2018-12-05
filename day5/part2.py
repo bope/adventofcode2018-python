@@ -1,4 +1,4 @@
-def prev_solution(input):
+def prev_solution1(input):
     input = list(input)
     trigger = True
     while trigger:
@@ -13,18 +13,51 @@ def prev_solution(input):
     return len(input)
 
 
-def solution(input):
+def solution1(input):
     chars = set(input.lower())
     lowest = None
     for c in chars:
         new_input = input.replace(c, '')
         new_input = new_input.replace(c.upper(), '')
-        l = prev_solution(new_input)
+        l = prev_solution1(new_input)
         if lowest is None or l < lowest:
             lowest = l
     return lowest
 
 
+def prev_solution2(input):
+    input = list(input)
+    i = 0
+    while True:
+        try:
+            a = input[i]
+            b = input[i+1]
+        except IndexError:
+            return len(input)
+
+        u, l = sorted([a, b])
+        if u.isupper() and l.islower() and u.lower() == l:
+            input.pop(i)
+            input.pop(i)
+            i -= 1
+        else:
+            i += 1
+
+
+def solution2(input):
+    chars = set(input.lower())
+    lowest = None
+    for c in chars:
+        new_input = input.replace(c, '')
+        new_input = new_input.replace(c.upper(), '')
+        l = prev_solution2(new_input)
+        if lowest is None or l < lowest:
+            lowest = l
+    return lowest
+
 if __name__ == '__main__':
+    # with open('input.txt') as fh:
+    #    print(solution1(fh.read().strip()))
+    
     with open('input.txt') as fh:
-        print(solution(fh.read().strip()))
+        print(solution2(fh.read().strip()))

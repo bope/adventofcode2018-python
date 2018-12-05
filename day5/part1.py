@@ -1,4 +1,4 @@
-def solution(input):
+def solution1(input):
     input = list(input)
     trigger = True
     while trigger:
@@ -13,7 +13,29 @@ def solution(input):
     return len(input)
 
 
+def solution2(input):
+    input = list(input)
+    i = 0
+    while True:
+        try:
+            a = input[i]
+            b = input[i+1]
+        except IndexError:
+            return len(input)
+
+        u, l = sorted([a, b])
+        if u.isupper() and l.islower() and u.lower() == l:
+            input.pop(i)
+            input.pop(i)
+            i -= 1
+        else:
+            i += 1
+
 
 if __name__ == '__main__':
+    #with open('input.txt') as fh:
+    #    print(solution1(fh.read().strip()))
+
     with open('input.txt') as fh:
-        print(solution(fh.read().strip()))
+        print(solution2(fh.read().strip()))
+    

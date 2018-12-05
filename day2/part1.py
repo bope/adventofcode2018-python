@@ -1,6 +1,7 @@
 from collections import defaultdict
 
-def solution(input):
+
+def solution1(input):
     two = 0
     three = 0
     for box in input:
@@ -15,8 +16,15 @@ def solution(input):
             elif count == 3 and not three_f:
                 three += 1
                 three_f = True
-    
     return two * three
+
+
+def solution2(input):
+    counts = defaultdict(set)
+    for box in input:
+        for c in set(box):
+            counts[box.count(c)].add(box)
+    return len(counts[2]) * len(counts[3])
 
 
 def parse_input(input):
@@ -24,5 +32,8 @@ def parse_input(input):
 
 
 if __name__ == '__main__':
+    # with open('input.txt') as fh:
+    #     print(solution1(parse_input(fh.read())))
+    
     with open('input.txt') as fh:
-        print(solution(parse_input(fh.read())))
+        print(solution2(parse_input(fh.read())))

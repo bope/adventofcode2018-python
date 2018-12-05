@@ -1,5 +1,6 @@
 from itertools import combinations
 
+
 def solution(input):
     for a, b in combinations(input, 2):
         diff = 0

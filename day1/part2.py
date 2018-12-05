@@ -7,12 +7,11 @@ def solution(freq, input):
         if freq in freqs:
             return freq
         freqs.add(freq)
-    return None
-
 
 
 def parse_input(input):
     return map(int, input.split())
+
 
 if __name__ == '__main__':
     with open('input.txt') as fh:

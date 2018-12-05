@@ -1,7 +1,7 @@
 from datetime import datetime
 from collections import defaultdict
 
-def solution(input):
+def solution1(input):
     input = sorted(input, key=lambda x: x[0])
     guard = None
     guard_states = defaultdict(lambda: defaultdict(int))
@@ -29,4 +29,4 @@ def parse_input(input):
 
 if __name__ == '__main__':
     with open('input.txt') as fh:
-        print(solution(parse_input(fh.read().strip())))
+        print(solution1(parse_input(fh.read().strip())))
